@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  int mines_block[4][4] = {
+      {1, 1, 1, 0}, {1, 0, 1, 1}, {1, 1, 0, 1}, {1, 1, 0, 1}};
+  int bingo = 0;
+  int zero_hit = 0;
+  int input_row, input_column;
+  string playerName;
+
+  cout << "Enter your First Name" << endl;
+  cin >> playerName;
+  cout << "Welcome " << playerName << " to MineBlaster" << endl;
+  cout << endl;
+
+  cout << "The Game is simple , there're 4 bombs hidden in the Grid, Keep "
+          "guessing to find the Bingos Skipping the Bombs"
+       << endl;
+  cout << "If you hit a bomb tile, The Game is Over & so is your Wallet"
+       << endl;
+  while (bingo < 12 && zero_hit == 0) {
+    cout << playerName << " Enter the row you want to select";
+    cin >> input_row;
+    cout << playerName << " Enter the column you want to select";
+    cin >> input_column;
+
+    if (bingo == 4) {
+      cout << "You're doing Great, No one came so far " << endl;
+      cout << endl;
+    }
+    if (bingo == 7) {
+      cout << "Seems Someone's Lucky Today" << endl;
+      cout << endl;
+    }
+    if (bingo == 10) {
+      cout << "You're just 2 Guesses away from Jackpot" << endl;
+      cout << endl;
+    }
+
+    if (mines_block[input_row][input_column] == 1) {
+      cout << "Congrats " << playerName << " that's a mine, keep moving"
+           << endl;
+      cout << endl;
+      bingo++;
+    } else {
+      cout << "Oopsiee dasieee Game Over, That was a trap " << endl;
+      cout << endl;
+      cout << "Better luck next time " << playerName << endl;
+      cout << endl;
+      break;
+    }
+  }
+  if (bingo == 12) {
+    cout << "You're a Pro & I'm a Bankrupt Now" << endl;
+  }
+  return 0;
+}
